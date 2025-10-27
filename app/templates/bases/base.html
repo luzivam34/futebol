@@ -2,20 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,0
+">
     <title>{% block title %} Base {% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css' ) }}">
 </head>
 <body>
 <header>
-    <h1>{% block h1 %} Base {% endblock %}</h1>
+    <h1>Futebol</h1>
+    <nav>
+        {% block nav %}
+
+        {% endblock %}
+    </nav>
 </header>
 <br>
 <main>
+    <div class="container">
+        <div class="menu">
+            {% block menu %}
+
+            {% endblock %}
+        </div>
+        <div class="display">
+            {% block content %}
+
+            {% endblock %}
+        </div>
+    </div>
 
 </main>
 <br>
 <footer>
     <h4>&copy; Futebol 2025</h4>
 </footer>
-
+<script src="{{ url_for('static', filename='js/script.js' ) }}"></script>
 </body>
 </html>

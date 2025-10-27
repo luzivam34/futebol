@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 5px;
+    border: 1px solid green;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 62.5%;
+}
+
+header {
+    background: #11557C;
+    color: white;
+    text-align: center;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+}
+
+h1 {
+    font-size: 1.8rem;
+}
+
+nav {
+    font-size: 1rem;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+}
+
+nav a.ativo {
+    text-decoration: underline;
+}
+
+nav a:hover {
+    background: #A5D6D9;
+    color: #9C1A1C;
+}
+
+.container {
+    display: flex;
+}
+
+.img-name {
+    display: flex;
+}
+
+.img-name div {
+    align-items: center;
+}
+
+.img-name img {
+    width: 30px;
+}
+
+#table-rank td {
+    text-align: center;
+    padding: 2px;
+}
+
+#table-jogos {
+    text-align: center;
+    padding: 2px;
+}
+
+.img-name-table {
+    display: flex;
+}
+
+.img-name-table img {
+    padding: 0;
+    width: 30px;
+}
+
+
+.exp_table {
+    font-size: 10px;
+
+}
+
+.exp_table b {
+    border: 0;
+}
+
+footer {
+    background: #11557C;
+    color: white;
+    text-align: center;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+}

@@ -1,0 +1,77 @@
+{% extends 'bases/base.html' %}
+
+{% block title %}Cadastros de Clubes {% endblock %}
+
+{% block nav %}
+
+{% endblock %}
+
+{% block menu %}
+<ul>
+    <li><a href="/cadastros">Voltar</a></li>
+</ul>
+{% endblock %}
+
+{% block content %}
+<form method="post" enctype="multipart/form-data">
+    <div>
+        <div class="box">
+            <label>
+                Nome:
+                <input type="text" name="nome" required>
+            </label>
+            <label>
+                Fundação:
+                <input type="date" name="fundacao">
+            </label>
+            <label>
+                Estadio:
+                <input type="text" name="estadio" required>
+            </label>
+        </div>
+        <br>
+        <div class="box">
+            <label>
+                Cidade:
+                <input type="text" name="cidade" required>
+            </label>
+            <label>
+                Pais:
+                <input type="text" name="pais" required>
+            </label>
+            <label>
+                Escudo:
+                <input type="file" name="escudo" required>
+            </label>
+        </div>
+        <br>
+        <div class="box">
+            <label>
+                Vitoria:
+                <input type="number" name="vitorias" required value="0">
+            </label>
+            <label>
+                Empates:
+                <input type="number" name="empates" required value="0">
+            </label>
+            <label>
+                Derrotas:
+                <input type="number" name="derrotas" required value="0">
+            </label>
+        </div>
+        <br>
+        <div class="box">
+            <label>
+                Gols Pró:
+                <input type="number" name="gols_pro" required value="0">
+            </label>
+            <label>
+                Gols Contra:
+                <input type="number" name="gols_contra" required value="0">
+            </label>
+
+            <input type="submit" value="Enviar">
+        </div>
+    </div>
+</form>
+{% endblock %}

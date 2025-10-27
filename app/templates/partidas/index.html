@@ -1,0 +1,69 @@
+{% extends 'bases/base.html' %}
+
+{% block title %} Partidas {% endblock %}
+
+{% block nav %}
+<ul>
+    <li><a href="/">Homepage</a></li>
+</ul>
+{% endblock %}
+
+{% block menu %}
+<ul>
+    <li><a href="/cadastros">Cadastros</a></li>
+
+</ul>
+<br>
+<ul>
+    <li><a href="/">Voltar</a></li>
+
+</ul>
+{% endblock %}
+
+{% block content %}
+<table id="table-jogos">
+    <tr>
+        <th>ID</th>
+        <th>Data</th>
+        <th>Mandante</th>
+        <th>Resultado</th>
+        <th>Visitante</th>
+        <th>Estadio</th>
+        <th>Campeonatos</th>
+    </tr>
+    {% for jogo in partidas %}
+    <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ jogo.data }}</td>
+        <td class="img-name">
+            <div>
+                {% if jogo.mandante.escudo %}
+                <img src="{{url_for('static', filename=jogo.mandante.escudo ) }}"
+                     alt="{{ jogo.mandante.nome }}">
+                {% else %}
+                <span>None</span>
+                {% endif %}
+            </div>
+            <div>
+                {{ jogo.mandante.nome }}
+            </div>
+        </td>
+        <td>{{ jogo.gols_mandante }} x {{ jogo.gols_visitante }}</td>
+
+        <td class="img-name">
+            <div>
+                {% if jogo.visitante.escudo %}
+                <img src="{{ url_for('static', filename=jogo.visitante.escudo) }}"
+                     alt="{{ jogo.visitante.nome }}">
+                {% endif %}
+            </div>
+            <div>
+                {{ jogo.visitante.nome }}
+            </div>
+        </td>
+        <td>{{ jogo.mandante.estadio }}</td>
+        <td>{{ jogo.campeonato }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
