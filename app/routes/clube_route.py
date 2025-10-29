@@ -10,10 +10,10 @@ from app.models.mod_clube import Clube
 clubeBluePrint = Blueprint('clubes', __name__)
 
 
-@clubeBluePrint.route('/clubes')
+@clubeBluePrint.route('/clubes/cadastrado')
 def listar_clubes():
     clubes = Clube.query.order_by(Clube.nome).all()
-    return render_template('clubes/index.html', clubes=clubes)
+    return render_template('clubes/listadeclube.html', clubes=clubes)
 
 
 @clubeBluePrint.route('/cadastros/clube', methods=["GET", "POST"])

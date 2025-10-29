@@ -1,4 +1,7 @@
+from sqlalchemy import or_
+
 from app import db
+from app.models.mod_partida import Partida
 
 
 class Clube(db.Model):
@@ -28,3 +31,12 @@ class Clube(db.Model):
         backref='visitante_clube',
         lazy=True
     )
+
+    def partidas_por_campeonato(self, campeonato):
+        return Partida.query.filter(
+            or_(
+                Partida.mandante_id == self.id,
+                Partida.visitante_id == self.id
+            ),
+            Partida.campeonato == campeonato
+        ).all()

@@ -20,11 +20,15 @@ def create_app():
     from .routes.main_route import mainBluePrint
     from .routes.clube_route import clubeBluePrint
     from .routes.partidas_route import partidaBluePrint
+    from .routes.gamer_route import gamerBluePrint
+    from .routes.campeonatos_route import campBlueprint
 
     # registros das rotas blueprints
     app.register_blueprint(mainBluePrint)
     app.register_blueprint(clubeBluePrint)
     app.register_blueprint(partidaBluePrint)
+    app.register_blueprint(gamerBluePrint)
+    app.register_blueprint(campBlueprint)
 
     with app.app_context():
         db.create_all()

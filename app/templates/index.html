@@ -2,19 +2,28 @@
 
 {% block title %}Homepage{% endblock %}
 
+{% block h2 %} Home page {% endblock %}
+
 {% block nav %}
 {% endblock %}
 
 {% block menu %}
-<ul>
-    <li><a href="/cadastros">Cadastros</a></li>
-    <li><a href="/clubes">Clubes cadastrado</a></li>
-    <li><a href="/rank">Classificação</a></li>
-    <li><a href="/partidas">Partidas</a></li>
-    <li><a href="/gamer">Gamer</a></li>
-</ul>
+    <ul>
+        <li><a href="/cadastros">Cadastros</a></li>
+        <li><a href="/clubes">Clubes cadastrado</a></li>
+        <li><a href="/rank">Classificação</a></li>
+        <li><a href="/partidas">Partidas</a></li>
+        <li><a href="/gamer">Gamer</a></li>
+    </ul>
 {% endblock %}
 
 {% block content %}
+
+    <div>
+        <h2>Cadastros</h2>
+        <p>
+            Cadastre os Jogos, e eo clubes
+        </p>
+    </div>
 
 {% endblock %}

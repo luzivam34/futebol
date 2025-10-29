@@ -1,0 +1,71 @@
+{% extends 'bases/base.html' %}
+
+{% block title %}Classificação{% endblock %}
+
+{% block h2 %}Classificação{% endblock %}
+
+{% block nav %}
+{% endblock %}
+
+{% block menu %}
+    <ul>
+        <li><a href="/cadastros">Cadastros</a></li>
+        <li><a href="/paulistao">Paulistão</a></li>
+        <li><a href="/clubes">Clubes cadastrado</a></li>
+        <li><a href="/partidas">Partidas cadastrado</a></li>
+    </ul>
+{% endblock %}
+
+{% block content %}
+    <table id="table-rank">
+        <thead>
+        <tr>
+            <th>POS</th>
+            <th>Clubes</th>
+            <th>PTS</th>
+            <th>JG</th>
+            <th>VT</th>
+            <th>EM</th>
+            <th>DR</th>
+            <th>GP</th>
+            <th>GC</th>
+            <th>GS</th>
+            <th>Aprov</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for time in clubes %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td class="img-name-table">
+                    <div>
+                        {% if time.escudo %}
+                            <img src="{{ url_for('static', filename=time.escudo ) }}" width="50" alt="{{ time.nome }}">
+                        {% else %}
+                            <span>None</span>
+                        {% endif %}
+                    </div>
+                    <div>
+                        {{ time.nome }}
+                    </div>
+                </td>
+                <td></td>
+                <td></td>
+                <td>{{ time.vitorias }}</td>
+                <td>{{ time.empates }}</td>
+                <td>{{ time.derrotas }}</td>
+                <td>{{ time.gols_pro }}</td>
+                <td>{{ time.gols_contra }}</td>
+                <td></td>
+                <td></td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <p class="exp_table">
+        <b>POS:</b>Posição; <b>GP:</b>Gols Pro; <b>GC:</b>Gols Contra <b>SG:</b>Saldo de Gols
+    </p>
+
+{% endblock %}

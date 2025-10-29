@@ -1,0 +1,97 @@
+{% extends 'bases/base.html' %}
+
+{% block title %} Estatisticas Jogador{% endblock %}
+
+{% block h2 %} Jogador {% endblock %}
+
+{% block nav %}
+<ul>
+    <li><a href="/">Homepage</a></li>
+    <li><a href="/gamer">Games</a></li>
+</ul>
+{% endblock %}
+
+{% block menu %}
+<ul>
+    <li>
+        <button onclick="trocarID('gamerjogador')">Jogadores</button>
+    </li>
+    <li>
+        <button onclick="trocarID('pontosjogador')">Pontos</button>
+    </li>
+    <li>
+        <button onclick="trocarID('artilharia')">Artilharia</button>
+    </li>
+</ul>
+
+<ul>
+    <li><a href="/gamer">Voltar</a></li>
+</ul>
+{% endblock %}
+
+{% block content %}
+<div id="gamerjogador" style="display:block">
+    <h2>Jogadores</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Idade</th>
+            <th>Nação</th>
+            <th>Overal</th>
+            <th>Posição</th>
+            <th>Altura</th>
+            <th>Peso</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for jogador in jogadores %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ jogador.nome }}</td>
+            <td>{{ jogador.idade }}</td>
+            <td>{{ jogador.nation }}</td>
+            <td>{{ jogador.overal }}</td>
+            <td>{{ jogador.position }}</td>
+            <td>{{ jogador.altura }}</td>
+            <td>{{ jogador.peso }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div id="pontosjogador" style="display:none">
+    <h2>Pontuação</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Idade</th>
+            <th>Nação</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="artilharia" style="display:None">
+    <h2>Artilharia </h2>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+        </tr>
+        </thead>
+    </table>
+</div>
+
+{% endblock %}

@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     linhas.sort((a, b) => {
+
         const pontoA = parseInt(a.cells[2].textContent);
         const pontoB = parseInt(b.cells[2].textContent);
         const vitoriaA = parseInt(a.cells[4].textContent);
@@ -31,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const saldoB = parseInt(b.cells[9].textContent);
         const golsProA = parseInt(a.cells[7].textContent);
         const golsProB = parseInt(b.cells[7].textContent);
-
+        
 
         if (pontoB !== pontoA) return pontoB - pontoA;
 
@@ -48,3 +49,12 @@ document.addEventListener('DOMContentLoaded', () => {
         tabela.appendChild(linha);
     });
 });
+
+function trocarID(id) {
+    const divs = document.querySelectorAll('#pontosjogador, #artilharia, #gamerjogador');
+
+    divs.forEach(div => {
+        div.style.display = 'none';
+    });
+    document.getElementById(id).style.display = 'block';
+}

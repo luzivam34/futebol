@@ -1,17 +1,17 @@
 from app import db
 from app.models.mod_clube import Clube
-from app.models.mod_partida import Partida
 
 
-def atualizar_gols():
-    clubes = Clube.query.all()
+def atualizar_gols(partidas):
+    clubes_ids = set()
+    for partida in partidas:
+        clubes_ids.add(partida.mandante_id)
+        clubes_ids.add(partida.visitante_id)
 
-    # Zera os dados antes de recalcular
+    clubes = Clube.query.filter(Clube.id.in_(clubes_ids)).all()
     for clube in clubes:
         clube.gols_pro = 0
         clube.gols_contra = 0
-
-    partidas = Partida.query.all()
 
     for partida in partidas:
         mandante = Clube.query.get(partida.mandante_id)
@@ -28,16 +28,19 @@ def atualizar_gols():
     db.session.commit()
 
 
-def atualizar_resultados():
-    clubes = Clube.query.all()
+def atualizar_resultados(partidas):
+    clubes_ids = set()
+    for partida in partidas:
+        clubes_ids.add(partida.mandante_id)
+        clubes_ids.add(partida.visitante_id)
+
+    clubes = Clube.query.filter(Clube.id.in_(clubes_ids)).all()
 
     # Zera os dados antes de recalcular
     for clube in clubes:
         clube.vitorias = 0
         clube.empates = 0
         clube.derrotas = 0
-
-    partidas = Partida.query.all()
 
     for partida in partidas:
         mandante = Clube.query.get(partida.mandante_id)

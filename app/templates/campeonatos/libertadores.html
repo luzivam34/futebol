@@ -1,0 +1,72 @@
+{% extends 'bases/base.html' %}
+
+{% block title %}Libertadores{% endblock %}
+
+{% block h2 %}Libertadores{% endblock %}
+
+{% block nav %}
+    <ul>
+        <li><a href="/">Homepage</a></li>
+        <li><a href="/cadastros">Cadastros</a></li>
+        <li><a href="/clubes">Clubes</a></li>
+        <li><a href="/campeonatos" class="ativo">Campeonatos</a></li>
+        <li><a href="/partidas">Partidas</a></li>
+        <li><a href="/gamer">Gamers</a></li>
+    </ul>
+{% endblock %}
+
+{% block menu %}
+    <ul>
+        <li><a href="/rank">Rank Geral</a></li>
+        <li><a href="/paulistao">Paulistão</a></li>
+    </ul>
+
+{% endblock %}
+
+{% block content %}
+    <table id="table-rank">
+        <thead>
+        <tr>
+            <th>POS</th>
+            <th>Clubes</th>
+            <th>PTS</th>
+            <th>JG</th>
+            <th>VT</th>
+            <th>EM</th>
+            <th>DR</th>
+            <th>GP</th>
+            <th>GC</th>
+            <th>GS</th>
+            <th>Aprov</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for time in libertadores %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td class="img-name-table">
+                    <div>
+                        {% if time.escudo %}
+                            <img src="{{ url_for('static', filename=time.escudo ) }}" width="50" alt="{{ time.nome }}">
+                        {% else %}
+                            <span>None</span>
+                        {% endif %}
+                    </div>
+                    <div>
+                        {{ time.nome }}
+                    </div>
+                </td>
+                <td></td>
+                <td></td>
+                <td>{{ time.vitorias }}</td>
+                <td>{{ time.empates }}</td>
+                <td>{{ time.derrotas }}</td>
+                <td>{{ time.gols_pro }}</td>
+                <td>{{ time.gols_contra }}</td>
+                <td></td>
+                <td></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

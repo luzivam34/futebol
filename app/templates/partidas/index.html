@@ -2,6 +2,8 @@
 
 {% block title %} Partidas {% endblock %}
 
+{% block h2 %} Partidas {% endblock %}
+
 {% block nav %}
 <ul>
     <li><a href="/">Homepage</a></li>
@@ -10,7 +12,8 @@
 
 {% block menu %}
 <ul>
-    <li><a href="/cadastros">Cadastros</a></li>
+    <li><a href="/cadastros/partidas">Cadastros de Partidas</a></li>
+    <li><a href="/rank">Classificação</a></li>
 
 </ul>
 <br>
@@ -21,6 +24,15 @@
 {% endblock %}
 
 {% block content %}
+<h3>Buscar Partidas</h3>
+<form method="get" action="/partidas">
+    <input type="text" name="busca" placeholder="Buscar por time">
+    <button type="submit">Buscar</button>
+</form>
+<p>
+    <strong>{{ total }} partida{{ 's' if total else ' ' }} encontrado{{ 's' if total else ' ' }}</strong>
+</p>
+
 <table id="table-jogos">
     <tr>
         <th>ID</th>
@@ -31,10 +43,10 @@
         <th>Estadio</th>
         <th>Campeonatos</th>
     </tr>
-    {% for jogo in partidas %}
+    {% for jogo, mandante, visitantes in partidas %}
     <tr>
         <td>{{ loop.index }}</td>
-        <td>{{ jogo.data }}</td>
+        <td>{{ jogo.data.strftime('%d/%m/%Y') }}</td>
         <td class="img-name">
             <div>
                 {% if jogo.mandante.escudo %}
@@ -63,6 +75,10 @@
         </td>
         <td>{{ jogo.mandante.estadio }}</td>
         <td>{{ jogo.campeonato }}</td>
+    </tr>
+    {% else %}
+    <tr>
+        <td colspan="4">Nenhuma partida encontrada.</td>
     </tr>
     {% endfor %}
 </table>

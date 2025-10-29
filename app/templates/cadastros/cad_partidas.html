@@ -10,6 +10,11 @@
 
 {% block menu %}
 <ul>
+    <li><a href="/clubes">Clubes cadastrado</a></li>
+    <li><a href="/rank">Classificação</a></li>
+    <li><a href="/partidas">Partidas</a></li>
+</ul>
+<ul>
     <li><a href="/cadastros">Voltar</a></li>
 </ul>
 {% endblock %}
@@ -49,11 +54,7 @@
     <input type="number" name="gols_visitante" value="0"><br>
 
     <label for="campeonato">Campeonato:</label>
-    <select name="campeonato" required>
-        {% for partida in partidas %}
-        <option value="{{ partida.campeonato }}">{{ partida.campeonato }}</option>
-        {% endfor %}
-    </select><br>
+    <input type="text" name="campeonato">
 
     <button type="submit">Cadastrar Partida</button>
 </form>
