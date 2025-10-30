@@ -68,6 +68,15 @@ nav a:hover {
     border-radius: 8px;
 }
 
+.menu li {
+    list-style-type: none;
+}
+
+.menu a {
+    text-decoration: none;
+    color: black;
+}
+
 .display {
     flex: 3;
     background: white;
@@ -88,10 +97,15 @@ nav a:hover {
     width: 1.5rem;
 }
 
+#table-rank {
+    box-shadow: 1px 1px 1px blue;
+}
+
 #table-rank td {
     text-align: center;
     padding: 2px;
 }
+
 
 #table-jogos {
     text-align: center;
@@ -114,6 +128,30 @@ nav a:hover {
 
 .exp_table b {
     border: 0;
+}
+
+#table-grupos {
+    display: flex;
+    justify-content: center;
+}
+
+#table-grupoA, #table-grupoB, #table-grupoC, #table-grupoD {
+    box-shadow: 2px 4px 2px blue;
+    width: 100%;
+    text-align: center;
+}
+
+.g2 {
+    background: yellow;
+}
+
+.z2 {
+    background: #e86a6c;
+}
+
+.content-table-jogo {
+    display: flex;
+    justify-content: center;
 }
 
 footer {

@@ -1,8 +1,8 @@
 {% extends 'bases/base.html' %}
 
-{% block title %}Campeonatos{% endblock %}
+{% block title %}Paulista 2025{% endblock %}
 
-{% block h2 %}Campeonatos{% endblock %}
+{% block h2 %}Paulista 2025{% endblock %}
 
 {% block nav %}
     <ul>
@@ -17,9 +17,6 @@
 
 {% block menu %}
     <ul>
-        <li><a href="/rank">Rank Geral</a></li>
-        <li><a href="/libertadores">Libertadores</a></li>
-        <li><a href="/brasil">Brasil</a></li>
+        <li><a href="{{ url_for('estadual.classificacao_geral_paulista2025') }}">Classificação Geral</a></li>
     </ul>
-
 {% endblock %}

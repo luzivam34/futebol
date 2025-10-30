@@ -1,0 +1,132 @@
+{% extends 'bases/base.html' %}
+
+{% block title %}Paulista 2025{% endblock %}
+
+{% block h2 %}Paulista 2025{% endblock %}
+
+{% block nav %}
+    <ul>
+        <li><a href="/">Homepage</a></li>
+        <li><a href="/cadastros">Cadastros</a></li>
+        <li><a href="/clubes">Clubes</a></li>
+        <li><a href="/campeonatos" class="ativo">Campeonatos</a></li>
+        <li><a href="/partidas">Partidas</a></li>
+        <li><a href="/gamer">Gamers</a></li>
+    </ul>
+{% endblock %}
+
+{% block content %}
+    <div class="content-table-jogo">
+        <div class="tabela">
+
+            <table id="table-rank">
+                <thead>
+                <tr>
+                    <th>POS</th>
+                    <th>Clubes</th>
+                    <th>PTS</th>
+                    <th>JG</th>
+                    <th>VT</th>
+                    <th>EM</th>
+                    <th>DR</th>
+                    <th>GP</th>
+                    <th>GC</th>
+                    <th>GS</th>
+                    <th>Aprov</th>
+                    <th>T. Est</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for time in clubes %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td class="img-name-table">
+                            <div>
+                                {% if time.escudo %}
+                                    <img src="{{ url_for('static', filename=time.escudo ) }}" width="50"
+                                         alt="{{ time.nome }}">
+                                {% else %}
+                                    <span>None</span>
+                                {% endif %}
+                            </div>
+                            <div>
+                                {{ time.nome }}
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td>{{ time.vitorias }}</td>
+                        <td>{{ time.empates }}</td>
+                        <td>{{ time.derrotas }}</td>
+                        <td>{{ time.gols_pro }}</td>
+                        <td>{{ time.gols_contra }}</td>
+                        <td></td>
+                        <td></td>
+                        <td>{{ time.estadual }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="jogos">
+            <h3>Buscar Partidas</h3>
+            <form method="get" action="/paulista2025/classificacaogeral">
+                <input type="text" name="busca" placeholder="Buscar por time">
+                <button type="submit">Buscar</button>
+            </form>
+            <p>
+                <strong>{{ total }} partida{{ 's' if total else ' ' }} encontrado{{ 's' if total else ' ' }}</strong>
+            </p>
+            <table id="table-jogos">
+                <tr>
+                    <th>ID</th>
+                    <th>Data</th>
+                    <th>Mandante</th>
+                    <th>Resultado</th>
+                    <th>Visitante</th>
+                    <th>Estadio</th>
+                    <th>Campeonatos</th>
+                </tr>
+
+                {% for jogo, mandante, visitante in partidas %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ jogo.data.strftime('%d/%m/%Y') }}</td>
+                        <td class="img-name">
+                            <div>
+                                {% if jogo.mandante.escudo %}
+                                    <img src="{{ url_for('static', filename=jogo.mandante.escudo ) }}"
+                                         alt="{{ jogo.mandante.nome }}">
+                                {% else %}
+                                    <span>None</span>
+                                {% endif %}
+                            </div>
+                            <div>
+                                {{ jogo.mandante.nome }}
+                            </div>
+                        </td>
+                        <td>{{ jogo.gols_mandante }} x {{ jogo.gols_visitante }}</td>
+
+                        <td class="img-name">
+                            <div>
+                                {% if jogo.visitante.escudo %}
+                                    <img src="{{ url_for('static', filename=jogo.visitante.escudo) }}"
+                                         alt="{{ jogo.visitante.nome }}">
+                                {% endif %}
+                            </div>
+                            <div>
+                                {{ jogo.visitante.nome }}
+                            </div>
+                        </td>
+                        <td>{{ jogo.mandante.estadio }}</td>
+                        <td>{{ jogo.campeonato }}</td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4">Nenhuma partida encontrada.</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock %}

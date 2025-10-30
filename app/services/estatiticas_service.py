@@ -1,5 +1,8 @@
+from sqlalchemy import or_
+
 from app import db
 from app.models.mod_clube import Clube
+from app.models.mod_partida import Partida
 
 
 def atualizar_gols(partidas):
@@ -65,3 +68,24 @@ def atualizar_resultados(partidas):
                 visitante.empates += 1
 
     db.session.commit()
+
+
+def buscar_clubes_por_nome(nomes):
+    return (
+        Clube.query
+        .join(Partida, or_(Clube.id == Partida.mandante_id, Clube.id == Partida.visitante_id
+                           ))
+        .filter(Clube.nome.in_(nomes))
+        .distinct()
+        .all()
+    )
+
+
+def buscar_partidas_por_campeonato(campeonato):
+    return (
+        Clube.query
+        .join(Partida, or_(Clube.id == Partida.mandante_id, Clube.id == Partida.visitante_id))
+        .filter(Partida.campeonato.in_(campeonato))
+        .distinct()
+        .all()
+    )

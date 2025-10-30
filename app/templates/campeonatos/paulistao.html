@@ -24,50 +24,437 @@
 {% endblock %}
 
 {% block content %}
-    <table id="table-rank">
-        <thead>
-        <tr>
-            <th>POS</th>
-            <th>Clubes</th>
-            <th>PTS</th>
-            <th>JG</th>
-            <th>VT</th>
-            <th>EM</th>
-            <th>DR</th>
-            <th>GP</th>
-            <th>GC</th>
-            <th>GS</th>
-            <th>Aprov</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for time in paulista %}
-            <tr>
-                <td>{{ loop.index }}</td>
-                <td class="img-name-table">
-                    <div>
-                        {% if time.escudo %}
-                            <img src="{{ url_for('static', filename=time.escudo ) }}" width="50" alt="{{ time.nome }}">
-                        {% else %}
-                            <span>None</span>
-                        {% endif %}
-                    </div>
-                    <div>
-                        {{ time.nome }}
-                    </div>
-                </td>
-                <td></td>
-                <td></td>
-                <td>{{ time.vitorias }}</td>
-                <td>{{ time.empates }}</td>
-                <td>{{ time.derrotas }}</td>
-                <td>{{ time.gols_pro }}</td>
-                <td>{{ time.gols_contra }}</td>
-                <td></td>
-                <td></td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 
+    <div>
+        <button onclick="mostrarEsconderII('classificao-geral')">Classificação Geral</button>
+        <button onclick="mostrarEsconderII('table-grupos')">Grupos</button>
+        <button onclick="mostrarEsconderII('table-mata')">Mata-mata</button>
+    </div>
+
+    <div id="classificao-geral" style="display: none">
+        <table id="table-rank">
+            <thead>
+            <tr>
+                <th>POS</th>
+                <th>Clubes</th>
+                <th>PTS</th>
+                <th>JG</th>
+                <th>VT</th>
+                <th>EM</th>
+                <th>DR</th>
+                <th>GP</th>
+                <th>GC</th>
+                <th>GS</th>
+                <th>Aprov</th>
+                <th>T. Est</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for time in paulista %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td class="img-name-table">
+                        <div>
+                            {% if time.escudo %}
+                                <img src="{{ url_for('static', filename=time.escudo ) }}" width="50"
+                                     alt="{{ time.nome }}">
+                            {% else %}
+                                <span>None</span>
+                            {% endif %}
+                        </div>
+                        <div>
+                            {{ time.nome }}
+                        </div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td>{{ time.vitorias }}</td>
+                    <td>{{ time.empates }}</td>
+                    <td>{{ time.derrotas }}</td>
+                    <td>{{ time.gols_pro }}</td>
+                    <td>{{ time.gols_contra }}</td>
+                    <td></td>
+                    <td></td>
+                    <td>{{ time.estadual }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <br>
+
+    <div id="table-grupos" style="display: none">
+        <div>
+            <h3>Grupo A</h3>
+
+            <table id="table-grupoA">
+                <thead>
+                <tr>
+                    <th>POS</th>
+                    <th>Clubes</th>
+                    <th>PTS</th>
+                    <th>JG</th>
+                    <th>VT</th>
+                    <th>EM</th>
+                    <th>DR</th>
+                    <th>GP</th>
+                    <th>GC</th>
+                    <th>GS</th>
+                    <th>Aprov</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for time in grupoA %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td class="img-name-table">
+                            <div>
+                                {% if time.escudo %}
+                                    <img src="{{ url_for('static', filename=time.escudo ) }}" width="50"
+                                         alt="{{ time.nome }}">
+                                {% else %}
+                                    <span>None</span>
+                                {% endif %}
+                            </div>
+                            <div>
+                                {{ time.nome }}
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td>{{ time.vitorias }}</td>
+                        <td>{{ time.empates }}</td>
+                        <td>{{ time.derrotas }}</td>
+                        <td>{{ time.gols_pro }}</td>
+                        <td>{{ time.gols_contra }}</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h3>Grupo B</h3>
+
+            <table id="table-grupoB">
+                <thead>
+                <tr>
+                    <th>POS</th>
+                    <th>Clubes</th>
+                    <th>PTS</th>
+                    <th>JG</th>
+                    <th>VT</th>
+                    <th>EM</th>
+                    <th>DR</th>
+                    <th>GP</th>
+                    <th>GC</th>
+                    <th>GS</th>
+                    <th>Aprov</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for time in grupoB %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td class="img-name-table">
+                            <div>
+                                {% if time.escudo %}
+                                    <img src="{{ url_for('static', filename=time.escudo ) }}" width="50"
+                                         alt="{{ time.nome }}">
+                                {% else %}
+                                    <span>None</span>
+                                {% endif %}
+                            </div>
+                            <div>
+                                {{ time.nome }}
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td>{{ time.vitorias }}</td>
+                        <td>{{ time.empates }}</td>
+                        <td>{{ time.derrotas }}</td>
+                        <td>{{ time.gols_pro }}</td>
+                        <td>{{ time.gols_contra }}</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div>
+
+            <h3>Grupo C</h3>
+            <table id="table-grupoC">
+                <thead>
+                <tr>
+                    <th>POS</th>
+                    <th>Clubes</th>
+                    <th>PTS</th>
+                    <th>JG</th>
+                    <th>VT</th>
+                    <th>EM</th>
+                    <th>DR</th>
+                    <th>GP</th>
+                    <th>GC</th>
+                    <th>GS</th>
+                    <th>Aprov</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for time in grupoC %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td class="img-name-table">
+                            <div>
+                                {% if time.escudo %}
+                                    <img src="{{ url_for('static', filename=time.escudo ) }}" width="50"
+                                         alt="{{ time.nome }}">
+                                {% else %}
+                                    <span>None</span>
+                                {% endif %}
+                            </div>
+                            <div>
+                                {{ time.nome }}
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td>{{ time.vitorias }}</td>
+                        <td>{{ time.empates }}</td>
+                        <td>{{ time.derrotas }}</td>
+                        <td>{{ time.gols_pro }}</td>
+                        <td>{{ time.gols_contra }}</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h3>Grupo D</h3>
+            <table id="table-grupoD">
+                <thead>
+                <tr>
+                    <th>POS</th>
+                    <th>Clubes</th>
+                    <th>PTS</th>
+                    <th>JG</th>
+                    <th>VT</th>
+                    <th>EM</th>
+                    <th>DR</th>
+                    <th>GP</th>
+                    <th>GC</th>
+                    <th>GS</th>
+                    <th>Aprov</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for time in grupoD %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td class="img-name-table">
+                            <div>
+                                {% if time.escudo %}
+                                    <img src="{{ url_for('static', filename=time.escudo ) }}" width="50"
+                                         alt="{{ time.nome }}">
+                                {% else %}
+                                    <span>None</span>
+                                {% endif %}
+                            </div>
+                            <div>
+                                {{ time.nome }}
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td>{{ time.vitorias }}</td>
+                        <td>{{ time.empates }}</td>
+                        <td>{{ time.derrotas }}</td>
+                        <td>{{ time.gols_pro }}</td>
+                        <td>{{ time.gols_contra }}</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <br>
+
+    <div id="table-mata" style="display: block">
+    
+        <div>
+            <img src="{{ url_for('static', filename='img/corithians.png') }}">
+            <p>Campeão</p>
+        </div>
+
+        <div>
+            <button onclick="mudarFinal('quartasFinais')">Quartas de Finais</button>
+            <button onclick="mudarFinal('semiFinais')">Semi-Finais</button>
+            <button onclick="mudarFinal('finais')">Finais</button>
+        </div>
+
+
+        <div id="quartasFinais" style="display: none">
+            <table id="table-jogos-quartasfinais">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Data</th>
+                    <th>Mandante</th>
+                    <th>Resultado</th>
+                    <th>Visitante</th>
+                    <th>Estadio</th>
+                    <th>Campeonatos</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for jogo in quartasfinais %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ jogo.data.strftime('%d/%m/%Y') }}</td>
+                        <td class="img-name">
+                            <div>
+                                {% if jogo.mandante.escudo %}
+                                    <img src="{{ url_for('static', filename=jogo.mandante.escudo ) }}"
+                                         alt="{{ jogo.mandante.nome }}">
+                                {% else %}
+                                    <span>None</span>
+                                {% endif %}
+                            </div>
+                            <div>
+                                {{ jogo.mandante.nome }}
+                            </div>
+                        </td>
+                        <td>{{ jogo.gols_mandante }} x {{ jogo.gols_visitante }}</td>
+                        <td class="img-name">
+                            <div>
+                                {% if jogo.visitante.escudo %}
+                                    <img src="{{ url_for('static', filename=jogo.visitante.escudo) }}"
+                                         alt="{{ jogo.visitante.nome }}">
+                                {% endif %}
+                            </div>
+                            <div>
+                                {{ jogo.visitante.nome }}
+                            </div>
+                        </td>
+                        <td>{{ jogo.mandante.estadio }}</td>
+                        <td>{{ jogo.campeonato }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div id="semiFinais" style="display: none">
+            <table id="table-jogos-semifinal">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Data</th>
+                    <th>Mandante</th>
+                    <th>Resultado</th>
+                    <th>Visitante</th>
+                    <th>Estadio</th>
+                    <th>Campeonatos</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for jogo in semifinais %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ jogo.data.strftime('%d/%m/%Y') }}</td>
+                        <td class="img-name">
+                            <div>
+                                {% if jogo.mandante.escudo %}
+                                    <img src="{{ url_for('static', filename=jogo.mandante.escudo ) }}"
+                                         alt="{{ jogo.mandante.nome }}">
+                                {% else %}
+                                    <span>None</span>
+                                {% endif %}
+                            </div>
+                            <div>
+                                {{ jogo.mandante.nome }}
+                            </div>
+                        </td>
+                        <td>{{ jogo.gols_mandante }} x {{ jogo.gols_visitante }}</td>
+                        <td class="img-name">
+                            <div>
+                                {% if jogo.visitante.escudo %}
+                                    <img src="{{ url_for('static', filename=jogo.visitante.escudo) }}"
+                                         alt="{{ jogo.visitante.nome }}">
+                                {% endif %}
+                            </div>
+                            <div>
+                                {{ jogo.visitante.nome }}
+                            </div>
+                        </td>
+                        <td>{{ jogo.mandante.estadio }}</td>
+                        <td>{{ jogo.campeonato }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div id="finais" style="display: block">
+
+            <table id="table-jogos-finais">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Data</th>
+                    <th>Mandante</th>
+                    <th>Resultado</th>
+                    <th>Visitante</th>
+                    <th>Estadio</th>
+                    <th>Campeonatos</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for jogo in finais %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ jogo.data.strftime('%d/%m/%Y') }}</td>
+                        <td class="img-name">
+                            <div>
+                                {% if jogo.mandante.escudo %}
+                                    <img src="{{ url_for('static', filename=jogo.mandante.escudo ) }}"
+                                         alt="{{ jogo.mandante.nome }}">
+                                {% else %}
+                                    <span>None</span>
+                                {% endif %}
+                            </div>
+                            <div>
+                                {{ jogo.mandante.nome }}
+                            </div>
+                        </td>
+                        <td>{{ jogo.gols_mandante }} x {{ jogo.gols_visitante }}</td>
+                        <td class="img-name">
+                            <div>
+                                {% if jogo.visitante.escudo %}
+                                    <img src="{{ url_for('static', filename=jogo.visitante.escudo) }}"
+                                         alt="{{ jogo.visitante.nome }}">
+                                {% endif %}
+                            </div>
+                            <div>
+                                {{ jogo.visitante.nome }}
+                            </div>
+                        </td>
+                        <td>{{ jogo.mandante.estadio }}</td>
+                        <td>{{ jogo.campeonato }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
 {% endblock %}

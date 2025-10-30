@@ -3,59 +3,63 @@
 {% block title %}Cadastros de Partidas{% endblock %}
 
 {% block nav %}
-<ul>
-    <li><a href="/">Homepage</a></li>
-</ul>
+    <ul>
+        <li><a href="/">Homepage</a></li>
+    </ul>
 {% endblock %}
 
 {% block menu %}
-<ul>
-    <li><a href="/clubes">Clubes cadastrado</a></li>
-    <li><a href="/rank">Classificação</a></li>
-    <li><a href="/partidas">Partidas</a></li>
-</ul>
-<ul>
-    <li><a href="/cadastros">Voltar</a></li>
-</ul>
+    <ul>
+        <li><a href="/clubes">Clubes cadastrado</a></li>
+        <li><a href="/rank">Classificação</a></li>
+        <li><a href="/partidas">Partidas</a></li>
+    </ul>
+    <ul>
+        <li><a href="/cadastros">Voltar</a></li>
+    </ul>
 {% endblock %}
 
 {% block content %}
-<form method="POST" enctype="multipart/form-data">
-    <label for="data">Data da partida:</label>
-    <input type="date" name="data" required><br>
+    <form method="POST" enctype="multipart/form-data">
+        <label for="data">Data da partida:</label>
+        <input type="date" name="data" required><br>
 
-    <label for="estadio">Estádio:</label>
-    <select name="estadio" required>
-        {% for clube in clubes %}
-        <option value="{{ clube.estadio }}">{{ clube.estadio }}</option>
-        {% endfor %}
-    </select><br>
-    <!--
-    <input type="text" name="estadio"><br>
--->
-    <label for="mandante_id">Clube Mandante:</label>
-    <select name="mandante_id" required>
-        {% for clube in clubes %}
-        <option value="{{ clube.id }}">{{ clube.nome }}</option>
-        {% endfor %}
-    </select><br>
+        <label for="estadio">Estádio:</label>
+        <select name="estadio" required>
+            {% for clube in clubes %}
+                <option value="{{ clube.estadio }}">{{ clube.estadio }}</option>
+            {% endfor %}
+        </select><br>
+        <!--
+        <input type="text" name="estadio"><br>
+    -->
+        <label for="mandante_id">Clube Mandante:</label>
+        <select name="mandante_id" required>
+            {% for clube in clubes %}
+                <option value="{{ clube.id }}">{{ clube.nome }}</option>
+            {% endfor %}
+        </select><br>
 
-    <label for="visitante_id">Clube Visitante:</label>
-    <select name="visitante_id" required>
-        {% for clube in clubes %}
-        <option value="{{ clube.id }}">{{ clube.nome }}</option>
-        {% endfor %}
-    </select><br>
+        <label for="visitante_id">Clube Visitante:</label>
+        <select name="visitante_id" required>
+            {% for clube in clubes %}
+                <option value="{{ clube.id }}">{{ clube.nome }}</option>
+            {% endfor %}
+        </select><br>
 
-    <label for="gols_mandante">Gols Mandante:</label>
-    <input type="number" name="gols_mandante" value="0"><br>
+        <label for="gols_mandante">Gols Mandante:</label>
+        <input type="number" name="gols_mandante" value="0"><br>
 
-    <label for="gols_visitante">Gols Visitante:</label>
-    <input type="number" name="gols_visitante" value="0"><br>
+        <label for="gols_visitante">Gols Visitante:</label>
+        <input type="number" name="gols_visitante" value="0"><br>
 
-    <label for="campeonato">Campeonato:</label>
-    <input type="text" name="campeonato">
+        <label for="campeonato">Campeonato:</label>
+        <select name="campeonato" required>
+            {% for partida in partidas %}
+                <option value="{{ partida.campeonato }}">{{ partida.campeonato|title }}</option>
+            {% endfor %}
+        </select><br>
 
-    <button type="submit">Cadastrar Partida</button>
-</form>
+        <button type="submit">Cadastrar Partida</button>
+    </form>
 {% endblock %}

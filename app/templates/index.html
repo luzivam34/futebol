@@ -5,22 +5,37 @@
 {% block h2 %} Home page {% endblock %}
 
 {% block nav %}
+    <ul>
+        <li><a href="/cadastros">Cadastros</a></li>
+        <li><a href="/clubes">Clubes</a></li>
+        <li><a href="/campeonatos">Campeonatos</a></li>
+        <li><a href="/gamer">Gamer</a></li>
+    </ul>
 {% endblock %}
 
 {% block menu %}
     <ul>
-        <li><a href="/cadastros">Cadastros</a></li>
-        <li><a href="/clubes">Clubes cadastrado</a></li>
-        <li><a href="/rank">Classificação</a></li>
-        <li><a href="/partidas">Partidas</a></li>
-        <li><a href="/gamer">Gamer</a></li>
+        <li>
+            <button onclick="mostrarEsconder('noticias')">Principais noticias</button>
+        </li>
+        <li>
+            <button onclick="mostrarEsconder('sobre')">Sobre</button>
+        </li>
     </ul>
 {% endblock %}
 
 {% block content %}
 
-    <div>
-        <h2>Cadastros</h2>
+    <div id="noticias" style="display:block">
+        <h2>Principais Noticias</h2>
+        <p>
+            Cadastre os Jogos, e eo clubes
+        </p>
+    </div>
+
+    <div id="sobre" style="display:none">
+
+        <h2>Sobre</h2>
         <p>
             Cadastre os Jogos, e eo clubes
         </p>

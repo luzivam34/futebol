@@ -38,11 +38,13 @@ def cadastro_clubes():
         derrotas = request.form['derrotas']
         gols_pro = request.form['gols_pro']
         gols_contra = request.form['gols_contra']
+        estadual = request.form['estadual']
+        divisao = request.form['divisao']
 
         clube = Clube(
             nome=nome, fundacao=fundacao, estadio=estadio, cidade=cidade, pais=pais,
             vitorias=vitorias, empates=empates, derrotas=derrotas, gols_pro=gols_pro,
-            gols_contra=gols_contra, escudo=escudo_file
+            gols_contra=gols_contra, escudo=escudo_file, estadual=estadual, divisao=divisao
         )
         db.session.add(clube)
         db.session.commit()

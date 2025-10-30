@@ -42,7 +42,17 @@ def lista_partida():
 @partidaBluePrint.route('/cadastros/partidas', methods=['POST', 'GET'])
 def cadastrar_partida():
     clubes = Clube.query.order_by(Clube.nome).all()
-    partidas = Partida.query.all()
+    
+    from collections import OrderedDict
+
+    partidas_raw = Partida.query.all()
+    campeonatos_unicos = OrderedDict()
+    for partida in partidas_raw:
+        if partida.campeonato not in campeonatos_unicos:
+            campeonatos_unicos[partida.campeonato] = partida
+
+    partidas = campeonatos_unicos.values()
+
     if request.method == "POST":
         data = request.form['data']
         estadio = request.form['estadio']

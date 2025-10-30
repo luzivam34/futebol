@@ -22,6 +22,7 @@ def create_app():
     from .routes.partidas_route import partidaBluePrint
     from .routes.gamer_route import gamerBluePrint
     from .routes.campeonatos_route import campBlueprint
+    from .routes.estaduais_route import estaduaisBlueprint
 
     # registros das rotas blueprints
     app.register_blueprint(mainBluePrint)
@@ -29,6 +30,7 @@ def create_app():
     app.register_blueprint(partidaBluePrint)
     app.register_blueprint(gamerBluePrint)
     app.register_blueprint(campBlueprint)
+    app.register_blueprint(estaduaisBlueprint)
 
     with app.app_context():
         db.create_all()

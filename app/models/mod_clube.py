@@ -19,6 +19,8 @@ class Clube(db.Model):
     derrotas = db.Column(db.Integer, nullable=False, default=0)
     gols_pro = db.Column(db.Integer, nullable=False, default=0)
     gols_contra = db.Column(db.Integer, nullable=False, default=0)
+    estadual = db.Column(db.Integer, default=0)
+    divisao = db.Column(db.String(100))
 
     partidas_mandante = db.relationship(
         'Partida', foreign_keys='Partida.mandante_id',

@@ -11,7 +11,7 @@
     <ul>
         <li><a href="/cadastros">Cadastros</a></li>
         <li><a href="/paulistao">Paulistão</a></li>
-        <li><a href="/clubes">Clubes cadastrado</a></li>
+        <li><a href="/libertadores">Libertadores</a></li>
         <li><a href="/partidas">Partidas cadastrado</a></li>
     </ul>
 {% endblock %}
@@ -31,6 +31,7 @@
             <th>GC</th>
             <th>GS</th>
             <th>Aprov</th>
+            <th>T. Est</th>
         </tr>
         </thead>
         <tbody>
@@ -58,7 +59,7 @@
                 <td>{{ time.gols_contra }}</td>
                 <td></td>
                 <td></td>
-
+                <td>{{ time.estadual }}</td>
             </tr>
         {% endfor %}
         </tbody>
